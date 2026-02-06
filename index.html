@@ -8,5 +8,19 @@
 <body style="text-align:center; font-family:sans-serif;">
   <h1>Avacent Kitchain</h1>
   <p>Welcome to Kitchain Network!</p>
+
+  <!-- Enter Realm Button -->
+  <button id="enterRealmBtn" style="padding: 10px 20px; font-size: 18px; cursor: pointer; margin-top:20px;">
+    Enter Realm
+  </button>
+
+  <script>
+    const button = document.getElementById('enterRealmBtn');
+
+    button.addEventListener('click', () => {
+      alert("Welcome to the Realm!"); // Temporary message
+      location.reload(); // Refreshes the page
+    });
+  </script>
 </body>
 </html>
