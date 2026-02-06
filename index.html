@@ -1,23 +1,11 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Kitchain</title>
-  <meta name="description" content="Avacent Kitchain — Explore the Kitchain Network and enter the hidden Realm. Professional portal for Kitchain users.">
-
-  <!-- Google Fonts for professional look -->
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
-
   <style>
-    /* Reset default margins */
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
-
     body {
       font-family: 'Inter', sans-serif;
       display: flex;
@@ -25,93 +13,33 @@
       justify-content: center;
       align-items: center;
       height: 100vh;
-      text-align: center;
+      margin: 0;
+      background: linear-gradient(to bottom right, #1a1a1a, #333333);
       color: #fff;
-      background: url('https://source.unsplash.com/1920x1080/?technology,futuristic') no-repeat center center fixed;
-      background-size: cover;
-      transition: background 0.5s ease-in-out;
     }
-
-    h1 {
-      font-size: 3rem;
-      margin-bottom: 0.5rem;
-      text-shadow: 0 0 10px rgba(0,0,0,0.7);
-    }
-
-    p {
-      font-size: 1.5rem;
-      margin-bottom: 2rem;
-      text-shadow: 0 0 5px rgba(0,0,0,0.5);
-    }
-
+    h1 { font-size: 3em; margin-bottom: 10px; }
+    p { font-size: 1.2em; margin-bottom: 50px; }
     #enterRealmBtn {
-      padding: 15px 30px;
-      font-size: 1.2rem;
+      padding: 15px 40px;
+      font-size: 20px;
       cursor: pointer;
+      background-color: #4CAF50;
+      color: white;
       border: none;
       border-radius: 8px;
-      background: linear-gradient(90deg, #00C9FF, #92FE9D);
-      color: #000;
-      font-weight: 600;
-      box-shadow: 0 4px 15px rgba(0,0,0,0.3);
-      transition: transform 0.2s, box-shadow 0.2s;
+      transition: background 0.3s ease;
     }
-
-    #enterRealmBtn:hover {
-      transform: scale(1.05);
-      box-shadow: 0 6px 20px rgba(0,0,0,0.4);
-    }
-
-    /* Hidden Realm content */
-    #realmContent {
-      display: none;
-      margin-top: 3rem;
-      padding: 2rem;
-      background: rgba(0,0,0,0.6);
-      border-radius: 10px;
-      max-width: 600px;
-    }
-
-    #realmContent h2 {
-      font-size: 2rem;
-      margin-bottom: 1rem;
-      color: #00FFD5;
-    }
-
-    #realmContent p {
-      font-size: 1.2rem;
-      color: #fff;
-    }
-
+    #enterRealmBtn:hover { background-color: #45a049; }
   </style>
 </head>
 <body>
   <h1>Avacent Kitchain</h1>
   <p>Welcome to Kitchain Network!</p>
-
-  <!-- Enter Realm Button -->
   <button id="enterRealmBtn">Enter Realm</button>
-
-  <!-- Hidden Realm Content -->
-  <div id="realmContent">
-    <h2>Welcome to the Realm!</h2>
-    <p>This is the secret area of Kitchain where the magic happens. Customize it with games, AI tools, or exclusive content.</p>
-  </div>
-
   <script>
     const button = document.getElementById('enterRealmBtn');
-    const realm = document.getElementById('realmContent');
-
     button.addEventListener('click', () => {
-      // Reveal the hidden Realm content
-      realm.style.display = 'block';
-
-      // Optional: AI-generated dynamic background placeholder
-      document.body.style.background = `url('https://source.unsplash.com/1920x1080/?ai,technology,cyber') no-repeat center center fixed`;
-      document.body.style.backgroundSize = 'cover';
-
-      // Smooth scroll to realm content
-      realm.scrollIntoView({ behavior: 'smooth' });
+      window.location.href = "home.html";
     });
   </script>
 </body>
