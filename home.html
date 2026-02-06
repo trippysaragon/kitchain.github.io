@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Avacent Kitchain Realm</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+  <style>
+    /* Body and background */
+    body {
+      margin: 0;
+      font-family: 'Inter', sans-serif;
+      color: #fff;
+      overflow: hidden;
+      background: #0d0d0d;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      min-height: 100vh;
+      position: relative;
+    }
+
+    /* Particle canvas */
+    #particles {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: 0;
+    }
+
+    /* Header */
+    header {
+      z-index: 1;
+      text-align: center;
+      margin-top: 50px;
+    }
+    header h1 {
+      font-size: 3em;
+      margin-bottom: 10px;
+      color: #4CAF50;
+      text-shadow: 0 0 10px #4CAF50;
+    }
+    header p {
+      font-size: 1.2em;
+      color: #ccc;
+      margin-bottom: 40px;
+    }
+
+    /* Dashboard grid */
+    .dashboard {
+      z-index: 1;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 20px;
+      width: 90%;
+      max-width: 1200px;
+      margin-bottom: 50px;
+    }
+
+    /* Cards / buttons */
+    .card {
+      background: rgba(255,255,255,0.05);
+      border-radius: 12px;
+      padding: 20px;
+      text-align: center;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      box-shadow: 0 0 10px rgba(0,0,0,0.5);
+    }
+    .card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 0 20px #4CAF50;
+      background: rgba(76, 175, 80, 0.15);
+    }
+    .card h2 {
+      margin-bottom: 10px;
+      font-size: 1.5em;
+      color: #4CAF50;
+    }
+    .card p {
+      font-size: 1em;
+      color: #ccc;
+    }
+    .card button {
+      margin-top: 10px;
+      padding: 8px 20px;
+      font-size: 16px;
+      background-color: #4CAF50;
+      color: #fff;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: background 0.3s ease;
+    }
+    .card button:hover {
+      background-color: #45a049;
+    }
+  </style>
+</head>
+<body>
+  <!-- Particle background -->
+  <canvas id="particles"></canvas>
+
+  <!-- Header -->
+  <header>
+    <h1>Welcome to the Realm!</h1>
+    <p>Avacent Kitchain Hub</p>
+  </header>
+
+  <!-- Dashboard -->
+  <div class="dashboard">
+    <div class="card" onclick="alert('News clicked!')">
+      <h2>News</h2>
+      <p>Latest updates from Kitchain</p>
+      <button>Open</button>
+    </div>
+    <div class="card" onclick="alert('Your Coins clicked!')">
+      <h2>Your Coins</h2>
+      <p>Check your balance and transactions</p>
+      <button>View</button>
+    </div>
+    <div class="card" onclick="alert('Marketplace clicked!')">
+      <h2>Marketplace</h2>
+      <p>Explore items & collectibles</p>
+      <button>Shop</button>
+    </div>
+    <div class="card" onclick="alert('Missions clicked!')">
+      <h2>Missions</h2>
+      <p>Complete tasks and earn rewards</p>
+      <button>Start</button>
+    </div>
+    <div class="card" onclick="alert('Explore Realm clicked!')">
+      <h2>Explore Realm</h2>
+      <p>Discover hidden corners of Kitchain</p>
+      <button>Go</button>
+    </div>
+  </div>
+
+  <!-- Particle JS -->
+  <script>
+    const canvas = document.getElementById('particles');
+    const ctx = canvas.getContext('2d');
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+
+    const particles = [];
+    const colors = ['#4CAF50', '#ffffff', '#00ffcc'];
+
+    function random(min, max) {
+      return Math.random() * (max - min) + min;
+    }
+
+    class Particle {
+      constructor() {
+        this.x = random(0, canvas.width);
+        this.y = random(0, canvas.height);
+        this.radius = random(1, 3);
+        this.color = colors[Math.floor(random(0, colors.length))];
+        this.vx = random(-0.5, 0.5);
+        this.vy = random(-0.5, 0.5);
+      }
+      draw() {
+        ctx.beginPath();
+        ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
+        ctx.fillStyle = this.color;
+        ctx.fill();
+      }
+      update() {
+        this.x += this.vx;
+        this.y += this.vy;
+        if (this.x < 0 || this.x > canvas.width) this.vx *= -1;
+        if (this.y < 0 || this.y > canvas.height) this.vy *= -1;
+        this.draw();
+      }
+    }
+
+    function initParticles(count) {
+      for (let i = 0; i < count; i++) {
+        particles.push(new Particle());
+      }
+    }
+
+    function animate() {
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      particles.forEach(p => p.update());
+      requestAnimationFrame(animate);
+    }
+
+    initParticles(100);
+    animate();
+
+    window.addEventListener('resize', () => {
+      canvas.width = window.innerWidth;
+      canvas.height = window.innerHeight;
+    });
+  </script>
+</body>
+</html>
